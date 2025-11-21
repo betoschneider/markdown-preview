@@ -1,4 +1,5 @@
 :root {
+  /* Default Dark Theme */
   --bg-color: #0f172a;
   --surface-color: #1e293b;
   --border-color: #334155;
@@ -8,8 +9,26 @@
   --accent-hover: #0ea5e9;
   --editor-bg: #1e293b;
   --preview-bg: #0f172a;
+  --header-bg: rgba(30, 41, 59, 0.8);
+  --pane-header-bg: rgba(30, 41, 59, 0.5);
+  --code-bg: #0d1117;
   --font-sans: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+}
+
+[data-theme="light"] {
+  --bg-color: #f8fafc;
+  --surface-color: #ffffff;
+  --border-color: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --accent-color: #0ea5e9;
+  --accent-hover: #0284c7;
+  --editor-bg: #ffffff;
+  --preview-bg: #f8fafc;
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --pane-header-bg: rgba(241, 245, 249, 0.8);
+  --code-bg: #f1f5f9;
 }
 
 * {
@@ -38,7 +57,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: rgba(30, 41, 59, 0.8);
+  background-color: var(--header-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   height: 64px;
@@ -66,11 +85,13 @@ body {
 }
 
 /* Panes */
-.editor-pane, .preview-pane {
+.editor-pane,
+.preview-pane {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-width: 0; /* Prevent flex item from overflowing */
+  min-width: 0;
+  /* Prevent flex item from overflowing */
 }
 
 .editor-pane {
@@ -90,7 +111,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-bottom: 1px solid var(--border-color);
-  background-color: rgba(30, 41, 59, 0.5);
+  background-color: var(--pane-header-bg);
 }
 
 /* Editor */
@@ -137,10 +158,25 @@ body {
   color: var(--text-primary);
 }
 
-.markdown-body h1 { font-size: 2.25em; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3em; }
-.markdown-body h2 { font-size: 1.75em; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3em; }
-.markdown-body h3 { font-size: 1.5em; }
-.markdown-body h4 { font-size: 1.25em; }
+.markdown-body h1 {
+  font-size: 2.25em;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.3em;
+}
+
+.markdown-body h2 {
+  font-size: 1.75em;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.3em;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
 
 .markdown-body p {
   margin-bottom: 1em;
@@ -155,7 +191,8 @@ body {
   text-decoration: underline;
 }
 
-.markdown-body ul, .markdown-body ol {
+.markdown-body ul,
+.markdown-body ol {
   margin-bottom: 1em;
   padding-left: 2em;
 }
@@ -168,7 +205,8 @@ body {
 }
 
 .markdown-body pre {
-  background-color: #0d1117; /* Darker bg for code blocks */
+  background-color: var(--code-bg);
+  /* Darker bg for code blocks */
   padding: 1rem;
   border-radius: 6px;
   overflow-x: auto;
@@ -245,9 +283,67 @@ body {
   .container {
     flex-direction: column;
   }
-  
+
   .editor-pane {
     border-right: none;
     border-bottom: 1px solid var(--border-color);
   }
+}
+
+/* Theme Toggle */
+#theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+#theme-toggle:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  background-color: rgba(56, 189, 248, 0.1);
+}
+
+/* Hide/Show icons based on theme */
+[data-theme="light"] .sun-icon {
+  display: none;
+}
+
+[data-theme="light"] .moon-icon {
+  display: block;
+}
+
+:root:not([data-theme="light"]) .sun-icon {
+  display: block;
+}
+
+:root:not([data-theme="light"]) .moon-icon {
+  display: none;
+}
+
+/* Footer */
+.footer {
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
+  background-color: var(--surface-color);
+}
+
+.footer a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }

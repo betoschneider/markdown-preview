@@ -61,3 +61,28 @@ render();
 // Event listener
 editor.addEventListener('input', render);
 
+// Theme Toggle Logic
+const themeToggleBtn = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference or system preference
+const savedTheme = localStorage.getItem('theme');
+const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
+  htmlElement.setAttribute('data-theme', 'light');
+}
+
+themeToggleBtn.addEventListener('click', () => {
+  const currentTheme = htmlElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+  if (newTheme === 'light') {
+    htmlElement.setAttribute('data-theme', 'light');
+  } else {
+    htmlElement.removeAttribute('data-theme');
+  }
+
+  localStorage.setItem('theme', newTheme);
+});
+
