@@ -86,3 +86,9 @@ themeToggleBtn.addEventListener('click', () => {
   localStorage.setItem('theme', newTheme);
 });
 
+// Print Button Logic
+const printBtn = document.getElementById('print-btn');
+printBtn.addEventListener('click', () => {
+  window.print();
+});
+

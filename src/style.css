@@ -112,6 +112,9 @@ body {
   letter-spacing: 0.05em;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--pane-header-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Editor */
@@ -311,6 +314,27 @@ body {
   background-color: rgba(56, 189, 248, 0.1);
 }
 
+#print-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  margin-right: 0;
+}
+
+#print-btn:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  background-color: rgba(56, 189, 248, 0.1);
+}
+
 /* Hide/Show icons based on theme */
 [data-theme="light"] .sun-icon {
   display: none;
@@ -346,4 +370,54 @@ body {
 
 .footer a:hover {
   text-decoration: underline;
+}
+
+@media print {
+
+  .header,
+  .editor-pane,
+  .pane-header,
+  .footer {
+    display: none !important;
+  }
+
+  .container {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  .preview-pane {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    background-color: white !important;
+    color: black !important;
+    border: none;
+  }
+
+  #preview {
+    padding: 0;
+    color: black !important;
+  }
+
+  body {
+    background-color: white !important;
+    color: black !important;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Ensure code blocks look okay in print */
+  .markdown-body pre {
+    background-color: #f1f5f9 !important;
+    border: 1px solid #e2e8f0 !important;
+    color: black !important;
+  }
+
+  .markdown-body code {
+    background-color: rgba(148, 163, 184, 0.2) !important;
+    color: black !important;
+  }
 }
