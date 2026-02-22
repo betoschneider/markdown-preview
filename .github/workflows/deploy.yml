@@ -3,7 +3,7 @@ name: 🚀 Deploy automático no servidor
 on:
   push:
     branches:
-      - main  # dispara o deploy só quando há push na branch main
+      - main  # dispara com modificações na branch main
 
 jobs:
   deploy:
