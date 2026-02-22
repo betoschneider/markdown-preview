@@ -1,8 +1,8 @@
-# 📝 Markdown Preview
+# 📝 Markdown Editor
 
-Um visualizador de Markdown simples, elegante e em tempo real, construído com Vite e Vanilla JavaScript.
+Um editor de Markdown simples, elegante e em tempo real, construído com Vite e Vanilla JavaScript.
 
-Acesse o [Markdown Preview](https://betoschneider.com/markdown/).
+Acesse o [Markdown Editor](https://betoschneider.com/markdown/).
 
 ## 🚀 Funcionalidades
 

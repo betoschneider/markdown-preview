@@ -18,7 +18,7 @@ marked.setOptions({
 const editor = document.querySelector('#editor');
 const preview = document.querySelector('#preview');
 
-const defaultMarkdown = `# Bem-vindo ao Markdown Preview!
+const defaultMarkdown = `# Bem-vindo ao Markdown Editor!
 
 Comece a digitar no editor para ver suas alterações renderizadas em tempo real.
 
